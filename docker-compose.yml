@@ -1,0 +1,34 @@
+version: "3.9"
+
+# services: 
+#   frontend:
+#     container_name: nextapp
+#     image: nextapp
+#     # build:
+#     #   context: .
+#     #   dockerfile: docker/Dockerfile
+#     ports:
+#       - 3000:3000
+#     # volumes:
+#       # - .:/usr/src/pni
+#       # - /usr/src/pni/node_modules
+#       # - /usr/src/pni/.next
+#     networks:
+#        - ${NETWORK}
+
+services:
+  nextapp:
+    container_name: nextapp
+    image: nextapp
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    ports:
+      - "3000:3000"
+    networks:
+       - ${NETWORK}
+
+networks:
+  pni-network:
+    driver: bridge
+    name: ${NETWORK}
